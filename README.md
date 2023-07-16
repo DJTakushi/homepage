@@ -19,6 +19,14 @@
   - openApi server (python container)
   - task database
   - photo server
+
+# Build & Run
+In your dotnet environment:
+```
+cd homepage
+dotnet run
+```
+
 # Development Resources
 - c# dev with VSCode: https://code.visualstudio.com/docs/languages/csharp
 - docker with C#: https://www.pluralsight.com/blog/software-development/how-to-build-custom-containers-docker
