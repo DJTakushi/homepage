@@ -4,7 +4,84 @@
     ViewData["Title"] = "Home page";
 }
 
+
+<div class="jumbotron text-center">
+  <h1 class="time" tz="-21600">TIME</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table" id="finTable">
+        <tr>
+            <th scope="col">City</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cond.</th>
+            <th scope="col">Temp</th>
+            <th scope="col">Humid.</th>
+        </tr>
+        <tr>
+            <td scope="col">Chicago</td>
+            <td scope="col">1400</td>
+            <td scope="col">Sunny</td>
+            <td scope="col">30 C <br>98 F</td>
+            <td scope="col">100%</td>
+        </tr>
+        <tr>
+            <td scope="col">Atlanta</td>
+            <td scope="col">1500</td>
+            <td scope="col">-</td>
+            <td scope="col">- C<br> F</td>
+            <td scope="col">-%</td>
+        </tr>
+        <tr>
+            <td scope="col">Osaka</td>
+            <td scope="col">1500</td>
+            <td scope="col">-</td>
+            <td scope="col">- C<br> F</td>
+            <td scope="col">-%</td>
+        </tr>
+
+      </table>
+    </div>
+    <div class="col-sm">
+      <table class="table" id="finTable">
+        <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Val</th>
+            <th scope="col">Day</th>
+            <th scope="col">YOY</th>
+        </tr>
+        <tr>
+            <td>SP500</td>
+            <td>69.00</td>
+            <td>+1.05%</td>
+            <td>+12%</td>
+        </tr>
+        <tr>
+            <td>Nikkei 255</td>
+            <td>70.00</td>
+            <td>+1.09%</td>
+            <td>+1%</td>
+        </tr>
+        <tr>
+            <td>RPC</td>
+            <td>99.00</td>
+            <td>+100.0%</td>
+            <td>+199%</td>
+        </tr>
+        <tr>
+            <td>AMZN</td>
+            <td>203.00</td>
+            <td>+41.0%</td>
+            <td>+9%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+  <h1 class="display-4">Default C# Welcome</h1>
+  <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

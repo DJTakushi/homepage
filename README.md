@@ -4,13 +4,19 @@
 # Features 
 ### Completed Features
 ### Desired Features
-- clocks
+- Cities Table
+  - City, Time, Cond.,	Temp, Humid.
+  - Chicago
+  - Atlanta (dropdown)
+  - Osaka (dropdown)
 - financial data live updates
+  - S&P
+  - Dow Jones
+  - 
   - track a portfolio entered by the user
-- weather - openApi
 - task tracker
-- photo album
-- news feed
+- photo album (list of links)
+- news feed (embededd page)
 
 # Architecture
 - docker-compose containers
