@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+<style>
+  body {
+    background-image: url('images/neon-glow-outrun-synthwave-4k-if.jpg');
+    background-position: center;
+  }
+</style>
 
 <div class="jumbotron text-center">
   <h1 class="time">TIME</h1>
@@ -12,7 +17,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <table class="table" id="finTable">
+      <table class="table table-striped">
         <tr>
             <th scope="col">City</th>
             <th scope="col">Time</th>
@@ -48,11 +53,10 @@
             <td scope="col">- C<br> F</td>
             <td scope="col">-%</td>
         </tr>
-
       </table>
     </div>
     <div class="col-sm">
-      <table class="table" id="finTable">
+      <table class="table table-striped" id="finTable">
         <tr>
             <th scope="col">Ticker</th>
             <th scope="col">Val</th>
@@ -86,9 +90,20 @@
       </table>
     </div>
   </div>
-</div>
-
-<div class="text-center">
-  <h1 class="display-4">Default C# Welcome</h1>
-  <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+  <div class="row">
+    <table class="table table-striped" id="taskTable">
+      <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Creation</th>
+      </tr>
+      <tr>
+          <td scope="col">Weather server + integration</td>
+          <td scope="col">2023-07-18-1200</td>
+      </tr>
+      <tr>
+          <td scope="col">Clock improvments(better text, date)</td>
+          <td scope="col">2023-07-18-1300</td>
+      </tr>
+    </table>
+  </div>
 </div>
