@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="~/homepage.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    @* stock header *@
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">homepage</a>
@@ -29,7 +30,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> *@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -37,9 +38,11 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        @* stock footer *@
+        @* <div class="container">
             &copy; 2023 - homepage - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+        </div> *@
+        <button type="button" class="btn btn-dark" onclick="toggleTheme()">Toggle theme</button>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

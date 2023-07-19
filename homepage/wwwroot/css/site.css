@@ -19,4 +19,32 @@ html {
 
 body {
   margin-bottom: 60px;
+  color: var(--font-color);
+}
+
+.theme-light {
+  --color-primary: #DEEDFF;
+  --color-primary-t: #DEEDFFC0;
+  --color-secondary: #FFFFFF;
+  --color-secondary-t: #FFFFFFC0;
+
+  --color-menu: AliceBlue;
+  --color-menu-t: #F0F8FFC0;
+  --color-menu-font: MidnightBlue;
+
+  --color-accent: purple;
+  --font-color: #000000;
+}
+.theme-dark {
+  --color-primary: #0c0d13; /* dark navy */
+  --color-primary-t: #0c0d13C0;
+  --color-secondary: #0d1d31; /* navy */
+  --color-secondary-t: #0d1d31C0;
+
+  --color-menu: #343a40; /* original in bg-dark */
+  --color-menu-t: #343a40C0; ;
+  --color-menu-font: #AfCfff; /* Came up with it */
+
+  --color-accent: purple;
+  --font-color: #ffffff;
 }
