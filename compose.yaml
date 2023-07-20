@@ -13,5 +13,7 @@ services:
       - 3307:3307
     volumes:
       - my-todos:/var/lib/mysql
+      - ./database_init:/tmp/database
+    command: --init-file="/tmp/database/database_init.sql"
 volumes:
   my-todos:
