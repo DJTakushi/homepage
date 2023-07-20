@@ -42,3 +42,5 @@ docker compose down
 - c# dev with VSCode: https://code.visualstudio.com/docs/languages/csharp
 - docker with C#: https://www.pluralsight.com/blog/software-development/how-to-build-custom-containers-docker
 - docker's .NET samples : https://docs.docker.com/samples/dotnet/
+- docker-compose build/rebuild: https://betterstack.com/community/questions/how-to-rebuild-docker-container-in-docker-compose/
+- adding mysql container to compose: https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
