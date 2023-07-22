@@ -3,6 +3,12 @@ services:
     build: homepage
     ports:
       - 80:80
+  dataapi:
+    build: dataapi
+    ports: 
+      - 3000:3000
+    depends_on:
+      - homepageDatabase
   homepageDatabase:
     image: mysql:5.7
     environment:
