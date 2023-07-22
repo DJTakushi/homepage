@@ -32,6 +32,55 @@ function toggleTheme() {
   }
   else { setTheme('theme-dark'); }
 }
+function populateCityTable(){
+  /*TODO: add branch that gets/parses API content
+  Use default only on failure */
+  populateCityTableDefault();
+}
+function populateCityTableDefault(){
+  genCityTableRow("Chicago","America/Chicago","-","-",
+    "https://openweathermap.org/img/wn/10d@2x.png","-");
+  genCityTableRow("Atlanta","America/New_York","-","-",
+    "https://openweathermap.org/img/wn/10d@2x.png","-");
+  genCityTableRow("UTC","UTC","-","-",
+    "https://openweathermap.org/img/wn/10d@2x.png","-");
+  genCityTableRow("Osaka","Japan","-","-",
+  "https://openweathermap.org/img/wn/10d@2x.png","-");
+}
+function genCityTableRow(name_, tz_,tc_,tf_,icon_,hum_){
+  const tbl = document.getElementById("cityTable");
+  var row = tbl.insertRow();
+  row.classList.add("cityRow");
+
+  var name_c = row.insertCell();
+  name_c.innerHTML=name_;
+  name_c.setAttribute("scope","col");
+  name_c.classList.add("cityName");
+
+  var time_c = row.insertCell();
+  time_c.innerHTML="-";
+  time_c.setAttribute("scope","col");
+  time_c.setAttribute("tz",tz_);
+  time_c.classList.add("time");
+  
+  var cond_c = row.insertCell();
+  cond_c.setAttribute("scope","col");
+  cond_c.classList.add("condition");
+  var iconImg = document.createElement("IMG");
+  iconImg.src=icon_;
+  iconImg.height=40;
+  cond_c.appendChild(iconImg);
+
+  var temp_c = row.insertCell();
+  temp_c.innerHTML=tc_+" c <br>"+tf_+" f";
+  temp_c.setAttribute("scope","col");
+  temp_c.classList.add("temp");
+
+  var humid_c = row.insertCell();
+  humid_c.innerHTML=hum_+"%";
+  humid_c.setAttribute("scope","col");
+  humid_c.classList.add("humidity");
+}
 
 function applyTimes() {
   // based on https://www.plus2net.com/javascript_tutorial/clock.php
