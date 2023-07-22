@@ -1,6 +1,12 @@
 # data api
 - api interface to database
 
+# run
+In this directory:
+```
+node app.js
+```
+
 # api structure
 - /city - all city data
   - city/<city> - city data
