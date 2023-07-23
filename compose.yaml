@@ -3,6 +3,8 @@ services:
     build: homepage
     ports:
       - 80:80
+    depends_on:
+      - dataapi
   dataapi:
     build: dataapi
     ports: 

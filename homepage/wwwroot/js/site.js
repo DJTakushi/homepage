@@ -32,22 +32,33 @@ function toggleTheme() {
   }
   else { setTheme('theme-dark'); }
 }
-function populateCityTable(){
-  /*TODO: add branch that gets/parses API content
-  Use default only on failure */
-  populateCityTableDefault();
+async function populateCityTable(){
+  const uri = 'http://localhost:3000/cities';
+  const r = await fetch(uri);
+  const rCode = await r.status;
+  if (rCode==200){
+    const responseJson = await r.json();
+    for(const jrow of responseJson){
+      genCityTableRow(jrow.name,jrow.tz,jrow.icon,jrow.tempc,jrow.tempf,
+        jrow.humidity);
+    }
+  }
+  else{
+    console.log("API returns code:"+rCode+", using defaults");
+    populateCityTableDefault();
+  }
 }
 function populateCityTableDefault(){
-  genCityTableRow("Chicago","America/Chicago","-","-",
-    "https://openweathermap.org/img/wn/10d@2x.png","-");
-  genCityTableRow("Atlanta","America/New_York","-","-",
-    "https://openweathermap.org/img/wn/10d@2x.png","-");
-  genCityTableRow("UTC","UTC","-","-",
-    "https://openweathermap.org/img/wn/10d@2x.png","-");
-  genCityTableRow("Osaka","Japan","-","-",
-  "https://openweathermap.org/img/wn/10d@2x.png","-");
+  genCityTableRow("Chicago","America/Chicago",
+    "https://openweathermap.org/img/wn/10d@2x.png","-","-","-");
+  genCityTableRow("Atlanta","America/New_York",
+    "https://openweathermap.org/img/wn/10d@2x.png","-","-","-");
+  genCityTableRow("UTC","UTC",
+    "https://openweathermap.org/img/wn/10d@2x.png","-","-","-");
+  genCityTableRow("Osaka","Japan",
+  "https://openweathermap.org/img/wn/10d@2x.png","-","-","-");
 }
-function genCityTableRow(name_, tz_,tc_,tf_,icon_,hum_){
+function genCityTableRow(name_, tz_,icon_,tc_,tf_,hum_){
   const tbl = document.getElementById("cityTable");
   var row = tbl.insertRow();
   row.classList.add("cityRow");
