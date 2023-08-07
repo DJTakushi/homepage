@@ -4,6 +4,19 @@ const app = express();
 app.use(cors())
 const port = 3000;
 
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: "host.docker.internal",
+  port: 3306,
+  user: "root",
+  password: "1234"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
 app.get('/', (req, res) => res.send('Hello World!'));
 app.get("/cities", (req,res) => {
   const cities = [

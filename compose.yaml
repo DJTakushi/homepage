@@ -16,9 +16,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: todos
-      MYSQL_TCP_PORT: 3307
+      MYSQL_TCP_PORT: 3306
     ports:
-      - 3307:3307
+      - 3306:3306
     volumes:
       - my-todos:/var/lib/mysql
       - ./database_init:/tmp/database
