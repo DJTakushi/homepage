@@ -53,8 +53,7 @@ con.connect(function(err) {
   /** insert Chicago **/
   var insert_chicago = "INSERT INTO cities \
     (id, cityName, tz, condition_, tempC, humidity) \
-    VALUES ('0', 'Chicago', 'America/Chicago', \
-    'http://openweathermap.org/img/wn/01d@2x.png', 1, 1)";
+    VALUES ('0', 'Chicago', 'America/Chicago', NULL, NULL, NULL)";
   con.query(insert_chicago, function (err, result) {
       if (err) throw err;
       console.log("Inserted 'Chicago'");
@@ -63,8 +62,7 @@ con.connect(function(err) {
     /** insert Atlanta **/
   var insert_atlanta = "INSERT INTO cities \
   (id, cityName, tz, condition_, tempC, humidity) \
-  VALUES ('1', 'Atlanta', 'America/New_York', \
-  'http://openweathermap.org/img/wn/01d@2x.png', 1, 1)";
+  VALUES ('1', 'Atlanta', 'America/New_York', NULL, NULL, NULL)";
   con.query(insert_atlanta, function (err, result) {
     if (err) throw err;
     console.log("Inserted 'Atlanta'");
@@ -73,8 +71,7 @@ con.connect(function(err) {
   /** insert UTC **/
   var insert_utc = "INSERT INTO cities \
   (id, cityName, tz, condition_, tempC, humidity) \
-  VALUES ('2', 'UTC', 'UTC', \
-  'http://openweathermap.org/img/wn/01d@2x.png', 1, 1)";
+  VALUES ('2', 'UTC', 'UTC', NULL, NULL, NULL)";
   con.query(insert_utc, function (err, result) {
     if (err) throw err;
     console.log("Inserted 'UTC'");
@@ -83,8 +80,7 @@ con.connect(function(err) {
   /** insert Osaka **/
   var insert_osaka = "INSERT INTO cities \
   (id, cityName, tz, condition_, tempC, humidity) \
-  VALUES ('3', 'Osaka', 'Japan', \
-  'http://openweathermap.org/img/wn/01d@2x.png', 1, 1)";
+  VALUES ('3', 'Osaka', 'Japan', NULL, NULL, NULL)";
   con.query(insert_osaka, function (err, result) {
     if (err) throw err;
     console.log("Inserted 'Osaka'");
@@ -105,11 +101,17 @@ app.get("/cities", (req,res) => {
       tmp.cityName = table.cityName;
       tmp.tz = table.tz;
       tmp.condition = table.condition_;
-      var tempC_ = Math.round(table.tempC*10)/10.0; // round to 1 dec
-      var tempF_ = Math.round((1.8*tempC_+32.0)*10)/10.0; // round to 1 dec
-      tmp.tempC = tempC_;
-      tmp.tempF = tempF_;
-      tmp.humidity = Math.round(table.humidity*10)/10.0; // round to 1 dec
+
+      tmp.tempC = null;
+      tmp.tempF = null;
+      if(table.tempC != null){
+        tmp.tempC = Math.round(table.tempC*10)/10.0; // round to 1 dec
+        tmp.tempF = Math.round((1.8*tempC_+32.0)*10)/10.0; // round to 1 dec
+      }
+      tmp.humidity = null;
+      if(table.humidity != null){
+        tmp.humidity = Math.round(table.humidity*10)/10.0; // round to 1 dec
+      }
       output.push(tmp);
   });
     res.json(output);
