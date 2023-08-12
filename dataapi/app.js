@@ -30,7 +30,7 @@ con.connect(function(err) {
   // });
 
   /** drop table for testing **/
-  var drop_cities_table = "DROP TABLE cities";
+  var drop_cities_table = "DROP TABLE IF EXISTS cities";
   con.query(drop_cities_table, function (err, result) {
     if (err) throw err;
     console.log("Table 'cities' dropped");
