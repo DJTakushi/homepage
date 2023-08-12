@@ -4,12 +4,19 @@ const app = express();
 app.use(cors())
 const port = 3000;
 
-var mysql = require('mysql');
+require('dotenv').config();
+
+var mysql = require('mysql2');
+console.log("host: "+ process.env.DATABASE_HOST_ADDRESS);
+console.log("port: "+ process.env.DATABASE_HOST_PORT);
+console.log("user: "+ process.env.DATABASE_USER);
+console.log("password: "+ process.env.DATABASE_USER_PW);
+
 var con = mysql.createConnection({
-  host: "host.docker.internal",
-  port: 3306,
-  user: "root",
-  password: "1234"
+  host: process.env.DATABASE_HOST_ADDRESS,
+  port: process.env.DATABASE_HOST_PORT,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_USER_PW
 });
 
 con.connect(function(err) {

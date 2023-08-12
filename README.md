@@ -29,7 +29,7 @@
 # Build & Run All
 In the repo head directory:
 ```
-docker compose up
+docker-compose up
 ```
 add `-d` option to run as *daemon* (I.E.: in the background)
 
@@ -44,3 +44,5 @@ docker compose down
 - docker's .NET samples : https://docs.docker.com/samples/dotnet/
 - docker-compose build/rebuild: https://betterstack.com/community/questions/how-to-rebuild-docker-container-in-docker-compose/
 - adding mysql container to compose: https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
+- mysql in Ubuntu fails to connect with just mysql-client: https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run
+- mysql denies hosts: https://serverfault.com/questions/793058/can-not-access-mysql-docker
