@@ -39,7 +39,7 @@ async function populateCityTable(){
   if (rCode==200){
     const responseJson = await r.json();
     for(const jrow of responseJson){
-      genCityTableRow(jrow.name,jrow.tz,jrow.icon,jrow.tempc,jrow.tempf,
+      genCityTableRow(jrow.cityName,jrow.tz,jrow.condition,jrow.tempC,jrow.tempF,
         jrow.humidity);
     }
   }

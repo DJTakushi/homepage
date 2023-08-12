@@ -16,3 +16,5 @@ node app.js
 # Resoureces
 - https://learn.microsoft.com/en-us/training/modules/build-web-api-nodejs-express/
 - https://stackoverflow.com/questions/64512831/docker-compose-getting-error-econnrefused-127-0-0-13306-with-mysql-and-nodejs
+- https://nodejs.dev/en/learn/how-to-read-environment-variables-from-nodejs/
+- https://www.w3schools.com/nodejs/nodejs_mysql.asp
