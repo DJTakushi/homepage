@@ -77,18 +77,27 @@ function genCityTableRow(name_, tz_,icon_,tc_,tf_,hum_){
   var cond_c = row.insertCell();
   cond_c.setAttribute("scope","col");
   cond_c.classList.add("condition");
-  var iconImg = document.createElement("IMG");
-  iconImg.src=icon_;
-  iconImg.height=40;
-  cond_c.appendChild(iconImg);
+  if(icon_ == null) cond_c.innerHTML="-";
+  else{
+    var iconImg = document.createElement("IMG");
+    iconImg.height=40;
+    iconImg.src=icon_;
+    cond_c.appendChild(iconImg);
+  }
 
   var temp_c = row.insertCell();
-  temp_c.innerHTML=tc_+" c <br>"+tf_+" f";
+  if (tc_ == null){
+    temp_c.innerHTML="-";
+  }
+  else{
+    temp_c.innerHTML=tc_+" C <br>"+tf_+" f";
+  }
   temp_c.setAttribute("scope","col");
   temp_c.classList.add("temp");
 
   var humid_c = row.insertCell();
-  humid_c.innerHTML=hum_+"%";
+  if (hum_ == null) humid_c.innerHTML="-";
+  else humid_c.innerHTML=hum_+"%";
   humid_c.setAttribute("scope","col");
   humid_c.classList.add("humidity");
 }
