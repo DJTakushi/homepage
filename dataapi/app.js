@@ -41,6 +41,8 @@ con.connect(function(err) {
     id int NOT NULL, \
     cityName varchar(255), \
     tz varchar(255), \
+    latitude float(6), \
+    longitude float(6), \
     condition_ varchar(512), \
     tempC float(6), \
     humidity float(6), \
@@ -52,17 +54,17 @@ con.connect(function(err) {
 
   /** insert Chicago **/
   var insert_chicago = "INSERT INTO cities \
-    (id, cityName, tz, condition_, tempC, humidity) \
-    VALUES ('0', 'Chicago', 'America/Chicago', NULL, NULL, NULL)";
+    (id, cityName, tz, latitude, longitude, condition_, tempC, humidity) \
+    VALUES ('0','Chicago','America/Chicago',41.85003,-87.65005,NULL,NULL,NULL)";
   con.query(insert_chicago, function (err, result) {
       if (err) throw err;
       console.log("Inserted 'Chicago'");
     });
 
-    /** insert Atlanta **/
+  /** insert Atlanta **/
   var insert_atlanta = "INSERT INTO cities \
-  (id, cityName, tz, condition_, tempC, humidity) \
-  VALUES ('1', 'Atlanta', 'America/New_York', NULL, NULL, NULL)";
+  (id, cityName, tz, latitude, longitude, condition_, tempC, humidity) \
+  VALUES ('1', 'Atlanta','America/New_York',33.749,-84.38798,NULL, NULL, NULL)";
   con.query(insert_atlanta, function (err, result) {
     if (err) throw err;
     console.log("Inserted 'Atlanta'");
@@ -70,8 +72,8 @@ con.connect(function(err) {
 
   /** insert UTC **/
   var insert_utc = "INSERT INTO cities \
-  (id, cityName, tz, condition_, tempC, humidity) \
-  VALUES ('2', 'UTC', 'UTC', NULL, NULL, NULL)";
+  (id, cityName, tz,latitude,longitude,condition_, tempC, humidity) \
+  VALUES ('2', 'UTC', 'UTC', 51.50853, -0.12574, NULL, NULL, NULL)";
   con.query(insert_utc, function (err, result) {
     if (err) throw err;
     console.log("Inserted 'UTC'");
@@ -79,8 +81,8 @@ con.connect(function(err) {
 
   /** insert Osaka **/
   var insert_osaka = "INSERT INTO cities \
-  (id, cityName, tz, condition_, tempC, humidity) \
-  VALUES ('3', 'Osaka', 'Japan', NULL, NULL, NULL)";
+  (id, cityName, tz, latitude, longitude, condition_, tempC, humidity) \
+  VALUES ('3', 'Osaka', 'Japan', 34.69374, 135.50218, NULL, NULL, NULL)";
   con.query(insert_osaka, function (err, result) {
     if (err) throw err;
     console.log("Inserted 'Osaka'");
