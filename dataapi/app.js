@@ -4,6 +4,7 @@ const app = express();
 app.use(cors())
 require('dotenv').config();
 const port = process.env.DATA_API_PORT;
+const http = require('http');
 
 var mysql = require('mysql2');
 console.log("host: "+ process.env.DATABASE_HOST_ADDRESS);
@@ -89,6 +90,66 @@ con.connect(function(err) {
   });
 });
 
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+
+  /** get all cities in table; update them **/
+  con.query("SELECT * FROM cities", function (err, result, fields) {
+    if (err) throw err;
+    result.forEach(function(table) {
+      /** get lattitude/longitude from sql content **/
+      var params_ = '?lat='+table.latitude;
+      params_+='&lon='+table.longitude;
+
+      /** API call for weather data**/
+      params_+='&appid='+process.env.OPEN_WEATHER_API_KEY;
+      params_+="&units=metric";
+      const weather_reqeust_options = {
+        hostname: 'api.openweathermap.org',
+        path: '/data/2.5/weather'+params_,
+        method: 'GET'
+      }
+
+      var new_temp_c_;
+      var new_humidity_;
+      var new_condition_;
+      console.log("requesting city "+table.cityName);
+      const req = http.request(weather_reqeust_options,(res) => {
+        console.log(`STATUS: ${res.statusCode}`);
+        // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+        res.setEncoding('utf8');
+        res.on('data', (chunk) => {
+          console.log(`BODY: ${chunk}`);
+          var j = JSON.parse(chunk);
+          new_temp_c_ = j["main"]["temp"];
+          new_humidity_ = j["main"]["humidity"];
+          new_condition_="https://openweathermap.org/img/wn/"
+          new_condition_+=j["weather"][0]["icon"]+"@2x.png";
+        });
+        res.on('end', () => {
+          // console.log('No more data in response.');
+
+          /** update weather content in table **/
+          var mysql_update_city = "UPDATE cities SET tempC = " + new_temp_c_;
+          mysql_update_city += ", humidity = " + new_humidity_;
+          mysql_update_city += ", condition_ = '" + new_condition_ + "'";
+          mysql_update_city += " WHERE cityName = '"+table.cityName+"'";
+          console.log("mysql_update_city:"+mysql_update_city);
+          con.query(mysql_update_city, function (err, result) {
+            if (err) throw err;
+            console.log("Updated city "+ table.cityName);
+          });
+        });
+      });
+      req.on('error', (e) => {
+        console.error(`problem with request: ${e.message}`);
+      });
+      req.end();
+    });
+  });
+});
+
 app.get('/', (req, res) => res.send('Hello World!'));
 app.get("/cities", (req,res) => {
   /** return cities data from database **/
@@ -108,7 +169,7 @@ app.get("/cities", (req,res) => {
       tmp.tempF = null;
       if(table.tempC != null){
         tmp.tempC = Math.round(table.tempC*10)/10.0; // round to 1 dec
-        tmp.tempF = Math.round((1.8*tempC_+32.0)*10)/10.0; // round to 1 dec
+        tmp.tempF = Math.round((1.8*tmp.tempC+32.0)*10)/10.0; // round to 1 dec
       }
       tmp.humidity = null;
       if(table.humidity != null){
